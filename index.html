@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard do Sensor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        #data {
+            font-size: 2em;
+            color: #0066cc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard do Sensor</h1>
+    <div id="data">Aguardando dados...</div>
+    
+    <script>
+        // Altere "localhost" para o IP do servidor se necessário
+        const socket = new WebSocket("ws://localhost:8765");
+
+        socket.onopen = function() {
+            console.log("Conectado ao servidor WebSocket!");
+        };
+
+        socket.onmessage = function(event) {
+            try {
+                const sensorData = JSON.parse(event.data);
+                document.getElementById("data").innerText =
+                    "Temperatura: " + sensorData.temperatura + "°C | Umidade: " + sensorData.umidade + "%";
+            } catch (e) {
+                console.error("Erro ao interpretar os dados:", e);
+            }
+        };
+
+        socket.onerror = function(error) {
+            console.error("Erro no WebSocket:", error);
+        };
+
+        socket.onclose = function() {
+            console.log("Conexão WebSocket encerrada.");
+        };
+    </script>
+</body>
+</html>
