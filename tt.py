@@ -23,9 +23,9 @@ def connect_wifi(ssid, password):
 
 # =====================================================
 # Configurações de rede e sensor
-SSID = "InHomeMac"         # Substitua pelo nome da sua rede
-PASSWORD = "kt@2z9sxcv"     # Substitua pela sua senha WiFi
-ws_url = "ws://192.168.1.237:8765"  # Altere para o IP/porta do seu servidor WebSocket
+SSID = "Xiaomi 11 Lite 5G NE"         # Substitua pelo nome da sua rede
+PASSWORD = "diogo0304"     # Substitua pela sua senha WiFi
+ws_url = "ws://192.168.140.217:8765"  # Altere para o IP/porta do seu servidor WebSocket
 sensor_pin = 5           # Número do pino onde o DHT11 está conectado
 
 # =====================================================
